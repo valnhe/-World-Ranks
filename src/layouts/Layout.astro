@@ -1,0 +1,64 @@
+---
+import Logo from "../images/Logo.astro";
+import '@fontsource/be-vietnam-pro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="flex justify-center items-center" id='image-bkg'>
+			<Logo/>
+		</header>
+		<main class="bg-[#282B30] rounded-0 lg:rounded-lg mx-0 lg:mx-[3%] p-5">
+			<slot/>
+		</main>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+
+	body {
+		background-color: #1B1D1F;
+		font-family: 'Be Vietnam Pro', sans-serif;
+
+	}
+
+	#image-bkg {
+		background-image: url("../images/Hero.jpg"); 
+		background-position: top center; 
+		background-repeat: no-repeat;
+		min-height: 240px;
+	}
+
+	@media screen and (min-width: 1281px) {
+		#image-bkg {
+			background-size: cover;
+		}
+		
+	}
+
+</style>
