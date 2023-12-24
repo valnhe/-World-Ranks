@@ -1,0 +1,10 @@
+---
+const { label , value } = Astro.props
+const area = label === 'Area' ? true : false
+---
+<article class="bg-[#282B30] rounded-lg p-5">
+    <h3 class="inline">{ label }</h3>
+    <p class={area ? "inline" : "hidden"}>(km<sup>2</sup>)</p>
+    <hr class="h-full w-[1px] border-[1px] mx-4 border-[#1C1D1F] inline"/>
+    <p class="inline">{ value }</p>
+</article>

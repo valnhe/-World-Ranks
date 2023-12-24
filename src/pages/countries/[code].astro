@@ -1,0 +1,54 @@
+---
+
+import Layout from '../../layouts/Layout.astro'
+import { getWorldRank , getCountryByCode} from '../../services/worldrank.js'
+import MiniCard from '../../components/MiniCard.astro'
+import InfoCard from '../../components/InfoCard.astro'
+import FlagsCard from '../../components/FlagsCard.astro'
+
+
+const { code } = Astro.params
+const country = await getCountryByCode(code)
+
+export async function getStaticPaths () {
+    const data = await getWorldRank()
+
+    return data.map((country: any) => ({
+        params: { code: country.cca2 }
+    }))
+}
+
+---
+
+<Layout title={country.name.common}>
+    <article class="text-[#D2D5DA]">
+        <header class="text-center">
+            <img 
+                src={country.flags.png} 
+                alt={`Flag of ${country.name.common}`}
+                class="rounded-xl w-auto h-[200px] mx-auto -mt-20 mb-4"
+            >
+            <h1 class="text-[32px] font-semibold">{country.name.common}</h1>
+            <h2 class="text-[14px] font-semibold">{country.name.official}</h2>
+            <section class="flex gap-5 justify-evenly mt-8 mb-16">
+                <MiniCard label="Population" value={country.population.toLocaleString()} />
+                <MiniCard label="Area" value={country.area.toLocaleString()} />
+            </section>
+            <section>
+                <InfoCard label="Capital" value={
+                    country.capital.map(capital => capital).join(', ')
+                } /> 
+                <InfoCard label="Subregion" value={country.subregion} />
+                <InfoCard label="Language" value={
+                    Object.values(country.languages).map(language => language).join(', ')
+                
+                } />
+                <InfoCard label="Currencies" value="por hacer" />
+                <InfoCard label="Continents" value={
+                    country.continents.map(continent => continent).join(', ')
+                } />
+                <FlagsCard countries={country.borders} />
+            </section>
+        </header>
+    </article>
+</Layout>
