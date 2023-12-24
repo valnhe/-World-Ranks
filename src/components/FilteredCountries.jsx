@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Region from './FilterComponents/Region.jsx';
+import Status from './FilterComponents/Status.jsx';
 
 const data = await fetch('https://restcountries.com/v3.1/all').then((response) =>
   response.json()
@@ -24,6 +25,14 @@ function FilteredCountries() {
         setRegion(region);
     }
 
+    const handleunMember = (unMember) => {
+        setUnMember(unMember);
+    }
+
+    const handleIndependent = (independent) => {
+        setIndependent(independent);
+    }
+
     return (
         <>
             <header className='flex justify-between'>
@@ -32,8 +41,9 @@ function FilteredCountries() {
             </header>
             <main className='grid grid-cols-1 md:grid-cols-4 gap-5'>
                 
-                <section className='px-3'>
+                <section>
                     <Region setFilter={handleRegion}/>
+                    <Status setUNFilter={handleunMember} setINFilter={handleIndependent}/>
                 </section>
 
                 <article className='col-span-3' >
@@ -46,7 +56,6 @@ function FilteredCountries() {
                     </header>
 
                     <hr className='border-1 border-[#6C727F]'/>
-
                     
                     <section className='text-[#D2D5DA] text-[16px] font-mediums'>
                         {
@@ -63,8 +72,6 @@ function FilteredCountries() {
                             })
                         }
                     </section>
-
-                    
 
                 </article>
                 
