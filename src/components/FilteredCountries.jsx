@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Region from './FilterComponents/Region.jsx';
 import Status from './FilterComponents/Status.jsx';
+import SortBy from './FilterComponents/SortBy.jsx';
 
 const data = await fetch('https://restcountries.com/v3.1/all').then((response) =>
   response.json()
@@ -21,29 +22,18 @@ function FilteredCountries() {
         return passRegionFilter && passIndependenceFilter && passUNMemberFilter;
     });
 
-    const handleRegion = (region) => {
-        setRegion(region);
-    }
-
-    const handleunMember = (unMember) => {
-        setUnMember(unMember);
-    }
-
-    const handleIndependent = (independent) => {
-        setIndependent(independent);
-    }
-
     return (
         <>
             <header className='flex justify-between'>
-                <h3 className='text-[#6C727F] font-bold'>Found {filteredCountries.length} Countries</h3>
+                <h3 className='text-[#6C727F] font-bold'>Found {filteredCountries .length} Countries</h3>
                 <h3 className='text-white'>jojos</h3>
             </header>
             <main className='grid grid-cols-1 md:grid-cols-4 gap-5'>
                 
                 <section>
-                    <Region setFilter={handleRegion}/>
-                    <Status setUNFilter={handleunMember} setINFilter={handleIndependent}/>
+                    <SortBy/>
+                    <Region setFilter={setRegion}/>
+                    <Status setUNFilter={setUnMember} setINFilter={setIndependent}/>
                 </section>
 
                 <article className='col-span-3' >
