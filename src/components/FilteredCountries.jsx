@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { getWorldRank } from '../services/worldrank.js'
+
+
 import Region from './FilterComponents/Region.jsx';
 import Status from './FilterComponents/Status.jsx';
 import SortBy from './FilterComponents/SortBy.jsx';
 
-const data = await fetch('https://restcountries.com/v3.1/all').then((response) =>
-  response.json()
-);
+import CountriesCard from './CountriesCard.jsx';
+
+const data = await getWorldRank();
 
 function FilteredCountries() {
 
@@ -51,13 +54,7 @@ function FilteredCountries() {
                         {
                             filteredCountries.map((country) => {
                                 return (
-                                    <article key={country.cca2}  className='grid grid-cols-7 xl:grid-cols-9 my-3 gap-1'>
-                                        <img src={country.flags.png} alt={`Flag of ${country.name.common}`} className='rounded-sm w-auto h-7' />
-                                        <p className='col-span-2'>{country.name.common}</p>
-                                        <p className='col-span-2'>{country.population.toLocaleString()}</p>
-                                        <p className='col-span-2'>{country.area.toLocaleString()}</p>
-                                        <p className='hidden xl:block col-span-2'>{country.region}</p>
-                                    </article>
+                                    <CountriesCard key={country.cca2} code={country.cca2} flag={country.flags.png} name={country.name.common} population={country.population.toLocaleString()} area={country.area.toLocaleString()} region={country.region} />
                                 )
                             })
                         }
