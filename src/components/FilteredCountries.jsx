@@ -26,7 +26,7 @@ function FilteredCountries() {
     });
 
     return (
-        <>
+        <main className="bg-[#1C1D1F] rounded-0 lg:rounded-lg p-8 mx-0 lg:mx-[3%] -mt-[60px] mb-20 border-[1px] border-[#282B30]">
             <header className='flex justify-between'>
                 <h3 className='text-[#6C727F] font-bold'>Found {filteredCountries .length} Countries</h3>
                 <h3 className='text-white'>jojos</h3>
@@ -63,6 +63,6 @@ function FilteredCountries() {
                 </article>
                 
             </main>
-        </>
+        </main>
     )
 } export default FilteredCountries;

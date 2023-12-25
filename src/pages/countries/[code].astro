@@ -13,15 +13,14 @@ const country = await getCountryByCode(code)
 export async function getStaticPaths () {
     const data = await getWorldRank()
 
-    return data.map((country: any) => ({
+    return data?.map((country: any) => ({
         params: { code: country.cca2 }
     }))
 }
-
 ---
 
 <Layout title={country.name.common}>
-    <article class="text-[#D2D5DA]">
+    <main class="bg-[#1C1D1F] rounded-0 lg:rounded-lg p-8 mx-0 lg:mx-[15%] -mt-[60px] mb-20 border-[1px] border-[#282B30] text-[#D2D5DA]">
         <header class="text-center">
             <img 
                 src={country.flags.png} 
@@ -29,7 +28,7 @@ export async function getStaticPaths () {
                 class="rounded-xl w-auto h-[200px] mx-auto -mt-20 mb-4"
             >
             <h1 class="text-[32px] font-semibold">{country.name.common}</h1>
-            <h2 class="text-[14px] font-semibold">{country.name.official}</h2>
+            <h2 class="text-[14px] font-medium">{country.name.official}</h2>
             <section class="flex gap-5 justify-evenly mt-8 mb-16">
                 <MiniCard label="Population" value={country.population.toLocaleString()} />
                 <MiniCard label="Area" value={country.area.toLocaleString()} />
@@ -43,12 +42,19 @@ export async function getStaticPaths () {
                     Object.values(country.languages).map(language => language).join(', ')
                 
                 } />
-                <InfoCard label="Currencies" value="por hacer" />
+                <InfoCard label="Currencies" value={
+                    Object.values(country.currencies).map((currency) => currency.name).join(', ')
+                
+                }/>
+              
                 <InfoCard label="Continents" value={
                     country.continents.map(continent => continent).join(', ')
                 } />
-                <FlagsCard countries={country.borders} />
+
+                {country.borders ? (<FlagsCard countries={country.borders} />) : (<InfoCard label="Neighbouring Countries" value={"No neighbouring countries"} />)}
+  
+                
             </section>
         </header>
-    </article>
+    </main>
 </Layout>
