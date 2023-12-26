@@ -1,7 +1,7 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import Logo from "../images/Logo.astro";
 import '@fontsource/be-vietnam-pro';
-import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -18,11 +18,11 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<ViewTransitions />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
-	<body class="min-h-screen">
-			<header class="flex justify-center items-center" id='image-bkg'>
+	<body>
+			<header class="flex justify-center items-center" id="image-bkg">
 				<Logo/>
 			</header>
 			<slot/>
@@ -44,8 +44,22 @@ const { title } = Astro.props;
 	body {
 		background-color: #1A1B1D;
 		font-family: 'Be Vietnam Pro', sans-serif;
+		overflow-y: scroll;
 
 	}
+
+	body::-webkit-scrollbar {
+		width: 12px; /* Ancho de la barra de desplazamiento */
+	}
+
+	body::-webkit-scrollbar-thumb {
+		background-color: #D2D5DA; /* Color del fondo del pulgar de la barra de desplazamiento */
+	}
+
+	body::-webkit-scrollbar-track {
+		background-color: #1C1D1F; /* Color del fondo de la pista de la barra de desplazamiento */
+	}
+
 
 	#image-bkg {
 		background-image: url("../images/Hero.jpg"); 

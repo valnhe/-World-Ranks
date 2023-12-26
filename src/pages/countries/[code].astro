@@ -23,10 +23,11 @@ export async function getStaticPaths () {
     <main class="bg-[#1C1D1F] rounded-0 lg:rounded-lg p-8 mx-0 lg:mx-[15%] -mt-[60px] mb-20 border-[1px] border-[#282B30] text-[#D2D5DA]">
         <header class="text-center">
             <img 
-                src={country.flags.png} 
-                alt={`Flag of ${country.name.common}`}
-                class="rounded-xl w-auto h-[200px] mx-auto -mt-20 mb-4"
+            src={country.flags.png} 
+            alt={`Flag of ${country.name.common}`}
+            class="rounded-xl w-auto h-[200px] mx-auto -mt-20 mb-4"
             >
+            <a href="/">homepage</a>
             <h1 class="text-[32px] font-semibold">{country.name.common}</h1>
             <h2 class="text-[14px] font-medium">{country.name.official}</h2>
             <section class="flex gap-5 justify-evenly mt-8 mb-16">

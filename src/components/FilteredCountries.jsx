@@ -68,7 +68,7 @@ function FilteredCountries() {
                 <h3 className='text-[#6C727F] font-bold'>Found {sortedCountries.length} Countries</h3>
                 <SearchBy handleSearchBy={handleSearchBy}/>
             </header>
-            <main className='grid grid-cols-1 md:grid-cols-4 gap-5'>
+            <main className='grid grid-cols-1 md:grid-cols-4 gap-10'>
                 
                 <section>
                     <SortBy onSortedBy={setSortedBy}/>
