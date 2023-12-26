@@ -1,24 +1,14 @@
 import { useState , useEffect } from "react";
 
-function Status ({ setUNFilter , setINFilter}) {
-    const [independent, setIndependent] = useState(false);
-    const [unMember, setUnMember] = useState(false);
+function Status ({ setUNFilter , setINFilter , independent , unMember}) {
 
     const handleIndependent = () => {
-        setIndependent(!independent);
+        setINFilter(!independent);
     }
 
     const handleunMember = () => {
-        setUnMember(!unMember);
+        setUNFilter(!unMember);
     }
-
-    useEffect(() => {
-        setINFilter(independent);
-    }, [independent, setINFilter]);
-
-    useEffect(() => {
-        setUNFilter(unMember);
-    }, [unMember, setINFilter]);
 
     return (
         <article className="mt-7">
@@ -29,8 +19,8 @@ function Status ({ setUNFilter , setINFilter}) {
                         className="relative peer shrink-0
                         appearance-none h-[1.5rem] w-[1.5rem] rounded-[0.25rem] border-[0.125rem] border-solid border-[#6C727F] outline-none
                         checked:border-[#4E80EE] checked:bg-[#4E80EE]"
-
-                        onChange={handleIndependent}
+                        checked={unMember}
+                        onChange={handleunMember}
                     />
                     <label htmlFor="unmember">Member of the United Nations</label>
                     <svg className="
@@ -46,8 +36,8 @@ function Status ({ setUNFilter , setINFilter}) {
                         className="relative peer shrink-0
                         appearance-none h-[1.5rem] w-[1.5rem] rounded-[0.25rem] border-[0.125rem] border-solid border-[#6C727F] outline-none
                         checked:border-[#4E80EE] checked:bg-[#4E80EE]"
-
-                        onChange={handleunMember}
+                        checked={independent}
+                        onChange={handleIndependent}
                     />
                     <label htmlFor="independent">Independent</label>
                     <svg className="
