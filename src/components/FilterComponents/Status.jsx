@@ -1,13 +1,11 @@
-import { useState , useEffect } from "react";
-
-function Status ({ setUNFilter , setINFilter , independent , unMember}) {
+function Status ({ onUNFilter , onINFilter , independent , unMember}) {
 
     const handleIndependent = () => {
-        setINFilter(!independent);
+        onINFilter(!independent);
     }
 
     const handleunMember = () => {
-        setUNFilter(!unMember);
+        onUNFilter(!unMember);
     }
 
     return (
