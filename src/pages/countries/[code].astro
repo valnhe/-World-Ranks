@@ -40,13 +40,24 @@ export async function getStaticPaths () {
                     country.capital.map(capital => capital).join(', ') :
                     "No capital"
                 } /> 
-                <InfoCard label="Subregion" value={country.subregion} />
+
+                <InfoCard label="Subregion" value={
+                    country.subregion ? 
+                    country.subregion :
+                    "No subregion"
+                } />
+                
                 <InfoCard label="Language" value={
-                    Object.values(country.languages).map(language => language).join(', ')
+
+                    country.languages ? 
+                    Object.values(country.languages).map(language => language).join(', ') :
+                    "No language"
                 
                 } />
                 <InfoCard label="Currencies" value={
-                    Object.values(country.currencies).map((currency) => currency.name).join(', ')
+                    country.currencies ? 
+                    Object.values(country.currencies).map((currency) => currency.name).join(', ') :
+                    "No currencies"
                 
                 }/>
               
