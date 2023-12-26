@@ -34,8 +34,11 @@ export async function getStaticPaths () {
                 <MiniCard label="Area" value={country.area.toLocaleString()} />
             </section>
             <section>
+
                 <InfoCard label="Capital" value={
-                    country.capital.map(capital => capital).join(', ')
+                    country.capital ? 
+                    country.capital.map(capital => capital).join(', ') :
+                    "No capital"
                 } /> 
                 <InfoCard label="Subregion" value={country.subregion} />
                 <InfoCard label="Language" value={
