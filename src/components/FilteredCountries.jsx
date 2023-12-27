@@ -7,6 +7,8 @@ import Status from './FilterComponents/Status.jsx';
 import SortBy from './FilterComponents/SortBy.jsx';
 
 import CountriesCard from './CountriesCard.jsx';
+import CountriesList from './Pagination/CountriesList.jsx';
+import Pagination from './Pagination/Pagination.jsx';
 
 const data = await getWorldRank();
 
@@ -88,15 +90,8 @@ function FilteredCountries() {
                     <hr className='border-1 border-[#6C727F]'/>
                     
                     <section className='text-[#D2D5DA] text-[16px] font-medium flex flex-col'>
-                        {
-                            sortedCountries.map((country) => {
-                                return (
-                                    <CountriesCard key={country.cca2} code={country.cca2} flag={country.flags.png} name={country.name.common} population={country.population.toLocaleString()} area={country.area.toLocaleString()} region={country.region} />
-                                )
-                            })
-                        }
-                    </section>
-
+                        <CountriesList all={sortedCountries}/>
+                    </section>  
                 </article>
                 
             </main>
