@@ -20,20 +20,30 @@ export async function getStaticPaths () {
 ---
 
 <Layout title={country.name.common}>
-    <main class="bg-[#1C1D1F] rounded-0 lg:rounded-lg p-8 mx-0 lg:mx-[15%] -mt-[60px] mb-20 border-[1px] border-[#282B30] text-[#D2D5DA]">
-        <header class="text-center">
+    <main class="bg-[#1C1D1F] lg:relative rounded-0 lg:rounded-lg p-8 mx-0 lg:mx-[15%] -mt-[60px] mb-20 border-[1px] border-[#282B30] text-[#D2D5DA]">
+        
+        <header class="text-center relative">
             <img 
             src={country.flags.png} 
             alt={`Flag of ${country.name.common}`}
             class="rounded-xl w-auto h-[200px] mx-auto -mt-20 mb-4"
             >
-            <a href="/">homepage</a>
             <h1 class="text-[32px] font-semibold">{country.name.common}</h1>
             <h2 class="text-[14px] font-medium">{country.name.official}</h2>
-            <section class="flex gap-5 justify-evenly mt-8 mb-16">
+            <section class="flex gap-5 justify-evenly mt-8 mb-4 lg:mb-16">
                 <MiniCard label="Population" value={country.population.toLocaleString()} />
                 <MiniCard label="Area" value={country.area.toLocaleString()} />
             </section>
+        </header>
+        <a href="/" class="lg:absolute z-10 top-0 right-1 p-3 text-[#6C727F] font-semibold text-base w-full flex place-items-center justify-center lg:justify-end gap-2 mb-4 lg:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6C727F" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+            </svg>
+            Homepage
+        </a>
             <section>
 
                 <InfoCard label="Capital" value={
@@ -70,6 +80,5 @@ export async function getStaticPaths () {
   
                 
             </section>
-        </header>
     </main>
 </Layout>
